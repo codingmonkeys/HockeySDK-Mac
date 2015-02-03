@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1E7FB95C17D3F36B00B7E10D"
-               BuildableName = "HockeySDK Documentation"
-               BlueprintName = "HockeySDK Documentation"
+               BlueprintIdentifier = "1E3B4F6B1996796B00203B89"
+               BuildableName = "HockeySDK Distribution"
+               BlueprintName = "HockeySDK Distribution"
                ReferencedContainer = "container:HockeySDK.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -42,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E7FB95C17D3F36B00B7E10D"
-            BuildableName = "HockeySDK Documentation"
-            BlueprintName = "HockeySDK Documentation"
+            BlueprintIdentifier = "1E3B4F6B1996796B00203B89"
+            BuildableName = "HockeySDK Distribution"
+            BlueprintName = "HockeySDK Distribution"
             ReferencedContainer = "container:HockeySDK.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

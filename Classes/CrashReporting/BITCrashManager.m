@@ -726,9 +726,13 @@ static PLCrashReporterCallbacks plCrashCallbacks = {
           [_crashReportUI setUserName:[self userNameForCrashReport]];
           [_crashReportUI setUserEmail:[self userEmailForCrashReport]];
           
-          [_crashReportUI askCrashReportDetails];
-          [_crashReportUI showWindow:self];
-          [_crashReportUI.window makeKeyAndOrderFront:self];
+          if (_crashReportUI.nibDidLoadSuccessfully) {
+            [_crashReportUI askCrashReportDetails];
+            [_crashReportUI showWindow:self];
+            [_crashReportUI.window makeKeyAndOrderFront:self];
+          } else {
+            [self sendNextCrashReport];
+          }
         }
       } else {
         [self cleanCrashReportWithFilename:_lastCrashFilename];
@@ -753,9 +757,9 @@ static PLCrashReporterCallbacks plCrashCallbacks = {
   if (!_plCrashReporter) {
     /* Configure our reporter */
     
-    PLCrashReporterSignalHandlerType signalHandlerType = PLCrashReporterSignalHandlerTypeBSD;
-    if (self.isMachExceptionHandlerEnabled) {
-      signalHandlerType = PLCrashReporterSignalHandlerTypeMach;
+    PLCrashReporterSignalHandlerType signalHandlerType = PLCrashReporterSignalHandlerTypeMach;
+    if (self.isMachExceptionHandlerDisabled) {
+      signalHandlerType = PLCrashReporterSignalHandlerTypeBSD;
     }
     BITPLCrashReporterConfig *config = [[BITPLCrashReporterConfig alloc] initWithSignalHandlerType: signalHandlerType
                                                                              symbolicationStrategy: PLCrashReporterSymbolicationStrategySymbolTable];
@@ -813,6 +817,13 @@ static PLCrashReporterCallbacks plCrashCallbacks = {
     }
   }
   
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+  if (self.delegate != nil && [self.delegate respondsToSelector:@selector(showMainApplicationWindowForCrashManager:)]) {
+    [self.delegate showMainApplicationWindowForCrashManager:self];
+  }
+#pragma clang diagnostic pop
+
   [self invokeProcessing];
 }
 
@@ -917,6 +928,11 @@ static PLCrashReporterCallbacks plCrashCallbacks = {
       BITHockeyLog(@"ERROR: Reading crash meta data. %@", error);
     }
 
+    NSString *descriptionMetaFilePath = [filename stringByAppendingPathExtension:@"desc"];
+    if ([_fileManager fileExistsAtPath:descriptionMetaFilePath]) {
+      description = [NSString stringWithContentsOfFile:descriptionMetaFilePath encoding:NSUTF8StringEncoding error:&error] ?: @"";
+    }
+    
     if ([applicationLog length] > 0) {
       if ([description length] > 0) {
         description = [NSString stringWithFormat:@"%@\n\nLog:\n%@", description, applicationLog];

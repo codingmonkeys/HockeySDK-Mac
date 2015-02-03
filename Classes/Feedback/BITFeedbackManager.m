@@ -401,15 +401,15 @@
     // archived on the very bottom
     
     if ([obj1 status] >= BITFeedbackMessageStatusSendInProgress && [obj2 status] < BITFeedbackMessageStatusSendInProgress) {
-      return NSOrderedDescending;
+      return NSOrderedAscending;
     } else if ([obj1 status] < BITFeedbackMessageStatusSendInProgress && [obj2 status] >= BITFeedbackMessageStatusSendInProgress) {
-      return NSOrderedAscending;
-    } else if ([obj1 status] == BITFeedbackMessageStatusArchived && [obj2 status] < BITFeedbackMessageStatusArchived) {
       return NSOrderedDescending;
-    } else if ([obj1 status] < BITFeedbackMessageStatusArchived && [obj2 status] == BITFeedbackMessageStatusArchived) {
+    } else if ([obj1 status] == BITFeedbackMessageStatusArchived && [obj2 status] < BITFeedbackMessageStatusArchived) {
       return NSOrderedAscending;
+    } else if ([obj1 status] < BITFeedbackMessageStatusArchived && [obj2 status] == BITFeedbackMessageStatusArchived) {
+      return NSOrderedDescending;
     } else {
-      return (NSInteger)[date2 compare:date1];
+      return (NSInteger)[date1 compare:date2];
     }
   }];
 }
@@ -525,6 +525,18 @@
     return YES;
   
   if (self.requireUserEmail == BITFeedbackUserDataElementRequired && !self.userEmail)
+    return YES;
+  
+  return NO;
+}
+
+- (BOOL)optionalManualUserDataMissing {
+  [self updateAppDefinedUserData];
+  
+  if (self.requireUserName == BITFeedbackUserDataElementOptional && !self.userName)
+    return YES;
+  
+  if (self.requireUserEmail == BITFeedbackUserDataElementOptional && !self.userEmail)
     return YES;
   
   return NO;
