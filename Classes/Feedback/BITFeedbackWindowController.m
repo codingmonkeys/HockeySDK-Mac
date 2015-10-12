@@ -210,18 +210,17 @@ NSString * const BITFeedbackMessageDateValueTransformerName = @"BITFeedbackMessa
   
   [self.manager updateMessagesListIfRequired];
   
+  if ([self.manager numberOfMessages] == 0 &&
+      [self.manager askManualUserDataAvailable] &&
+      ![self.manager didAskUserData] &&
+      ([self.manager requireManualUserDataMissing] ||
+       [self.manager optionalManualUserDataMissing])
+      ) {
     [self showUserDataView];
-//  if ([self.manager numberOfMessages] == 0 &&
-//      [self.manager askManualUserDataAvailable] &&
-//      ![self.manager didAskUserData] &&
-//      ([self.manager requireManualUserDataMissing] ||
-//       [self.manager optionalManualUserDataMissing])
-//      ) {
-//    [self showUserDataView];
-//  } else {
-//    [self showMessagesView];
-//    [self updateList];
-//  }
+  } else {
+    [self showMessagesView];
+    [self updateList];
+  }
 }
 
 - (void)dealloc {
