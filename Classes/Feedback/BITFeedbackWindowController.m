@@ -181,6 +181,23 @@ NSString * const BITFeedbackMessageDateValueTransformerName = @"BITFeedbackMessa
   [self.messageTextField setPlaceHolderString:@"Your Feedback"];
   
   [self.contactInfoTextField setStringValue:BITHockeyLocalizedString(@"FeedbackContactInfo", @"")];
+    
+    NSTextField *contactInfoTextField = self.contactInfoTextField;
+
+    NSMutableAttributedString *newString = [contactInfoTextField.attributedStringValue mutableCopy];
+
+    NSMutableAttributedString *linkString = [[NSMutableAttributedString alloc] initWithString:@"bugs@codingmonkeys.de"];
+    [linkString addAttribute: NSLinkAttributeName value: @"mailto:bugs@codingmonkeys.de" range: NSMakeRange(0, linkString.length)];
+    [linkString addAttribute: NSForegroundColorAttributeName value: [NSColor blueColor] range: NSMakeRange(0, linkString.length)];
+    
+    [newString appendAttributedString:linkString];
+
+    
+    contactInfoTextField.attributedStringValue = newString;
+
+    [contactInfoTextField setNeedsDisplay];
+    
+    
   [(BITSDKTextFieldCell *)[self.userNameTextField cell] setBitPlaceHolderString: BITHockeyLocalizedString(@"FeedbackName", @"")];
   [(BITSDKTextFieldCell *)[self.userEmailTextField cell] setBitPlaceHolderString: BITHockeyLocalizedString(@"FeedbackEmail", @"")];
   [self.userDataContinueButton setTitle:BITHockeyLocalizedString(@"FeedbackContinueButton", @"")];
@@ -193,17 +210,18 @@ NSString * const BITFeedbackMessageDateValueTransformerName = @"BITFeedbackMessa
   
   [self.manager updateMessagesListIfRequired];
   
-  if ([self.manager numberOfMessages] == 0 &&
-      [self.manager askManualUserDataAvailable] &&
-      ![self.manager didAskUserData] &&
-      ([self.manager requireManualUserDataMissing] ||
-       [self.manager optionalManualUserDataMissing])
-      ) {
     [self showUserDataView];
-  } else {
-    [self showMessagesView];
-    [self updateList];
-  }
+//  if ([self.manager numberOfMessages] == 0 &&
+//      [self.manager askManualUserDataAvailable] &&
+//      ![self.manager didAskUserData] &&
+//      ([self.manager requireManualUserDataMissing] ||
+//       [self.manager optionalManualUserDataMissing])
+//      ) {
+//    [self showUserDataView];
+//  } else {
+//    [self showMessagesView];
+//    [self updateList];
+//  }
 }
 
 - (void)dealloc {
@@ -325,8 +343,8 @@ NSString * const BITFeedbackMessageDateValueTransformerName = @"BITFeedbackMessa
 #pragma mark - Private User Data methods
 
 - (void)showUserDataView {
-  [self.userDataView setHidden:NO];
-  [self.feedbackView setHidden:YES];
+    [self.userDataView setHidden:NO];
+    [self.feedbackView setHidden:YES];
   [self.userNameTextField becomeFirstResponder];
 }
 

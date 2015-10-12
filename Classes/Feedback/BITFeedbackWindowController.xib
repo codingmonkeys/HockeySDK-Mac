@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
     <dependencies>
         <deployment version="1070" identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6250"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="8191"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="BITFeedbackWindowController">
@@ -65,7 +65,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <textField verticalHuggingPriority="750" id="72">
-                                                <rect key="frame" x="37" y="126" width="304" height="38"/>
+                                                <rect key="frame" x="37" y="116" width="304" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="Name" drawsBackground="YES" usesSingleLineMode="YES" id="83" customClass="BITSDKTextFieldCell">
                                                     <font key="font" metaFont="system"/>
@@ -91,7 +91,7 @@
                                                 </connections>
                                             </textField>
                                             <textField verticalHuggingPriority="750" id="88">
-                                                <rect key="frame" x="37" y="78" width="304" height="38"/>
+                                                <rect key="frame" x="37" y="68" width="304" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="left" placeholderString="Email" drawsBackground="YES" usesSingleLineMode="YES" id="89" customClass="BITSDKTextFieldCell">
                                                     <font key="font" metaFont="system"/>
@@ -117,7 +117,7 @@
                                                 </connections>
                                             </textField>
                                             <button id="76" userLabel="Continue Button">
-                                                <rect key="frame" x="140" y="20" width="98" height="38"/>
+                                                <rect key="frame" x="140" y="10" width="98" height="38"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <buttonCell key="cell" type="square" title="Continue" bezelStyle="shadowlessSquare" alignment="center" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="79">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -132,10 +132,10 @@ DQ
                                                     <outlet property="nextKeyView" destination="72" id="86"/>
                                                 </connections>
                                             </button>
-                                            <textField verticalHuggingPriority="750" id="77">
-                                                <rect key="frame" x="49" y="172" width="281" height="24"/>
+                                            <textField verticalHuggingPriority="750" setsMaxLayoutWidthAtFirstLayout="YES" id="77">
+                                                <rect key="frame" x="49" y="162" width="281" height="57"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Please provide your contact information" id="78">
+                                                <textFieldCell key="cell" selectable="YES" sendsActionOnEndEditing="YES" title="Please provide your contact information" allowsEditingTextAttributes="YES" id="78">
                                                     <font key="font" metaFont="systemBold"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -167,6 +167,7 @@ DQ
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="none" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="100" rowSizeStyle="automatic" viewBased="YES" id="13">
+                                                            <rect key="frame" x="0.0" y="0.0" width="598" height="0.0"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <color key="backgroundColor" red="0.92549026012420654" green="0.94117653369903564" blue="0.95294123888015747" alpha="1" colorSpace="deviceRGB"/>
                                                             <color key="gridColor" red="0.82352948188781738" green="0.83921575546264648" blue="0.84705889225006104" alpha="1" colorSpace="deviceRGB"/>
@@ -319,8 +320,9 @@ DQ
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowHeight="55" rowSizeStyle="automatic" viewBased="YES" id="vi6-mo-5xv">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="0.0"/>
                                                                     <autoresizingMask key="autoresizingMask"/>
-                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                                     <tableColumns>
                                                                         <tableColumn editable="NO" width="70" minWidth="40" maxWidth="1000" id="6Xa-8h-UXK">

@@ -65,7 +65,7 @@
 "FeedbackSendButton" = "Send";
 
 /* Contact info text */
-"FeedbackContactInfo" = "Please provide your contact information";
+"FeedbackContactInfo" = "Please provide your contact information. Alternatively, you can send us an email at ";
 
 /* Name placeholder text */
 "FeedbackName" = "Name";
